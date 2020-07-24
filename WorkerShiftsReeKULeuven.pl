@@ -2,7 +2,7 @@
 % Prolog Examination January 2016 Q4
 You have to plan the shifts of the take shifts one after another. For imum and maximum number of planning for the next quarter, his the minimum and the maximum. 
 workers for the next quarter. They each worker you are given his min-shifts in the next quarter. In the number of shifts has to be between 
-1) Represent this information in two different ways: by Prolog facts and by Prolog terms. Use your 2 repr6eritEctions to represent the information that worker 
+1) Represent this information in two different ways: by Prolog facts and by Prolog terms. Use your 2 representaions to represent the information that worker 
 danny 'needs to do at least 3 shifts and at most 7. 
 2) Define for both a predicate possible that for a given subset of workers determines whether together they can form a team to deal with a sequence of s shifts.
 Consider the case that danny needs to do at least 3 shifts and at most 7, and jef needs to do at least 2 shifts and at most 2, and ann needs to do at least 2 shifts 
