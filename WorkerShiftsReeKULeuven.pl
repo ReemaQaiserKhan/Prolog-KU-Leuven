@@ -35,7 +35,7 @@ P is Shift-Res,
     writeln('Not Possible')).
 
 % possible_facts predicate:- Checks if a Sequence of Shift is possible between two workers.
-% possible(danny, ann, 6).
+% possible_facts(danny, ann, 6).
 
 possible_facts(Name1,Name2,S):-
     findall(Min,worker(Name1,Min,Max),List1),
