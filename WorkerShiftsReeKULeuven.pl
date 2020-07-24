@@ -56,6 +56,7 @@ possible_terms(WorkerList,Name1,Name2,S):-
     between1(List1,List2,ListMax1,ListMax2,R1,R2),
     check(S,R1,R2).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/*
 Executing Program:
 ?- possible_facts(danny, ann, 6).
 OUTPUT:
@@ -65,4 +66,4 @@ true
 OUTPUT:
 Possible
 true
-
+*/
