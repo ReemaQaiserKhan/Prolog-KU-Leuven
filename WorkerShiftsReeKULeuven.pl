@@ -55,3 +55,14 @@ possible_terms(WorkerList,Name1,Name2,S):-
     findall(Max,member(worker(Name2,Min,Max),WorkerList),ListMax2),
     between1(List1,List2,ListMax1,ListMax2,R1,R2),
     check(S,R1,R2).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+Executing Program:
+?- possible_facts(danny, ann, 6).
+OUTPUT:
+Possible
+true
+?- possible_terms([worker(danny,3,7),worker(jeff,2,2),worker(ann,2,4)],jeff,ann,4).
+OUTPUT:
+Possible
+true
+
