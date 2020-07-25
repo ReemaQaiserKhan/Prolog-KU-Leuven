@@ -1,6 +1,6 @@
 % You can run TelephoneReeKULeuven.pl on https://swish.swi-prolog.org/. Write TelephoneReeKULeuven.pl in the search bar and then select.
 % Prolog Sampe Examination Q4.
-Suppose you have to represent a collection of (person, phone number) pairs. Let us assume that such a pair is represented by a Prolog term with functor tel and arity 2,
+/*Suppose you have to represent a collection of (person, phone number) pairs. Let us assume that such a pair is represented by a Prolog term with functor tel and arity 2,
 e.g. tel(maria, 2654). Note that you can use the builtin predicates @< , @=< , @> , and @>= to compare Prolog terms alphabetically,
 e.g.: ?- jean @< maria. succeeds. 
 ?- tel(jean,2111) @< tel(maria,1111). succeeds. 
@@ -9,7 +9,7 @@ e.g.: ?- jean @< maria. succeeds.
 (a) Give two different data structures that can be used in Prolog to represent sets of the above tel/2 terms. You may assume that every person has only one phone number. 
 (b) Discuss their advantages and disadvantages. 
 (c) Define for both cases the predicate possadd that for a given set S and for a ground tel/2 term X checks whether X is already in the set S and if not the predicate 
-should add X to S.
+should add X to S. */
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Facts
 tel(maria,2654).
