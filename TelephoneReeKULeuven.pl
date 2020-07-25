@@ -1,5 +1,5 @@
 % You can run TelephoneReeKULeuven.pl on https://swish.swi-prolog.org/. Write TelephoneReeKULeuven.pl in the search bar and then select.
-% Prolog Sampe Examination Q4.
+% Prolog Sample Examination Q4.
 /*Suppose you have to represent a collection of (person, phone number) pairs. Let us assume that such a pair is represented by a Prolog term with functor tel and arity 2,
 e.g. tel(maria, 2654). Note that you can use the builtin predicates @< , @=< , @> , and @>= to compare Prolog terms alphabetically,
 e.g.: ?- jean @< maria. succeeds. 
