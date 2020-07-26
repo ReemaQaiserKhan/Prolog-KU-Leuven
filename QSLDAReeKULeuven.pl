@@ -1,5 +1,5 @@
 /*
-You can run QSLDAReeKULeuven.pll on https://swish.swi-prolog.org/. Write QSLDAReeKULeuven.pl in the search bar and then select.
+You can run QSLDAReeKULeuven.pl on https://swish.swi-prolog.org/. Write QSLDAReeKULeuven.pl in the search bar and then select.
 Q. Write a prolog program that performs the following tasks on a list:
 1- Quicksorts the list.
 2- Lookup an Element if it is present in the new quicksorted list. If it is not in the list, then it should be added to the list.
