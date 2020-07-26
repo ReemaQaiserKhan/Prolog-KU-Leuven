@@ -70,3 +70,4 @@ OUTPUT:
 Quicksorted List:[1, 1, 2, 2, 3]
 Lookup List:[1, 1, 2, 2, 3, 8]
 New List after Deletion:[1, 1, 3, 8]
+false
