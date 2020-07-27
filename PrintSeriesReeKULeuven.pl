@@ -18,7 +18,7 @@ printseries(R,C):-
     O is C,
     loop(A1,B1,C,J,O,R).
 
-% loop Prdicate:- Prints the series using loop. 
+% loop Predicate:- Prints the series using loop. 
 loop(A1,B1,C,J,O,R):-  
       
     (  B1=<R->  
