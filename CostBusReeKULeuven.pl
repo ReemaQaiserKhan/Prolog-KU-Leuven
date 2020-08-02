@@ -52,13 +52,17 @@ costBus(X,Y,Z):-
     Z1=[D3],
     (findall(C1,distance(D1,D2,C1),S1),findall(C2,distance(D3,D2,C2),S2)->  
      (  S1=[]|S2=[]->  
-        write('Can not be computed as distance cost not provided.');    
+        write('Can not be computed as distance cost for path not provided.');    
         SW is S1+S2,
         write('Cost is: '),
         write(SW)
         )).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 /* Executing the Program:-
+?-costBus(heverlee, leuven-city-center,leuven-station).
+OUTPUT:
+Cost is: 18
+1true
 ?-costBus(leuven-station,leuven-city-center,c).
 OUTPUT:
 Cost is: 41
