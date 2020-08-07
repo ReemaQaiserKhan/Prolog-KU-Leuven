@@ -30,13 +30,13 @@ option(b,g).
 option(d,e,g).
 
 % iscoveredoption3elements Predicate:- Checks item ibelongs to which option with 3 elements. 
-%iscoveredoption3elements(a,[option(a,d,g),option(b,c,f),option(a,d,f)],O).
+% iscoveredoption3elements(a,[option(a,d,g),option(b,c,f),option(a,d,f)],O).
 iscoveredoption3elements(I,Os,O):-
  findall(A,member(option(A,_,_),Os),X1),
   findall(B,member(option(_,B,_),Os),X2),
    findall(C,member(option(_,_,C),Os),X3),
  
-   X1=[A1,A2,A3],
+    X1=[A1,A2,A3],
     X2=[B1,B2,B3],
     X3=[C1,C2,C3],
     X4=[A1,B1,C1],
@@ -55,7 +55,7 @@ iscoveredoption2elements(I,Os,O):-
  findall(A,member(option(A,_),Os),X1),
   findall(B,member(option(_,B),Os),X2),
     
-   X1=[A1,A2,A3],
+    X1=[A1,A2,A3],
     X2=[B1,B2,B3],
     X4=[A1,B1],
     X5=[A2,B2],
