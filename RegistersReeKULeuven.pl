@@ -68,7 +68,7 @@ same(S1,S2):-
     S1=S2.
 
 % checkInitialFinalRegisters predicate:- Checks that the FinalList generated is same to what is predicted.
-%checkInitialFinalRegisters([register(a,b,a,d)],1,2,3,4,FinalList,[[a],[d],[a],[b]])
+% checkInitialFinalRegisters([register(a,b,a,d)],1,2,3,4,FinalList,[[a],[d],[a],[b]])
 checkInitialFinalRegisters(RegisterList,A,B,C,D,FinalList,CheckList):-
     sequence_instructions(RegisterList,A,B,C,D,FinalList),
     same(FinalList,CheckList).
