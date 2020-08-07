@@ -14,9 +14,9 @@ consisting of options (1) and (5) to cover b,c,e, and g.
 2) How do you represent in Prolog the set of options? What is your representation for the options in the example? 
 3) An item is covered by an option if that option contains the item. Given a set of options Os and an item I to be covered write a predicate iscovered (I , Os , 0). 
 This predicate fails if I can not be covered by the options in Os and succeeds with 0 being a covering option. 
-4) Given a set of items Is including I  and given a set of options Os including a coysiingiagtiaLaor I, write a predicate residual to determine the residual items and options 
+4) Given a set of items Is including I  and given a set of options Os including a covering option O for I, write a predicate residual to determine the residual items and options 
 while using 0 to cover I. 
-5) Write a predicate f indexactcovering that determines for a given universe of items and a given set of options an exact covering (as a subset of options). 
+5) Write a predicate findexactcovering that determines for a given universe of items and a given set of options an exact covering (as a subset of options). 
 It fails if no exact covering can be found.  
 */
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
