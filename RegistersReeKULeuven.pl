@@ -27,7 +27,7 @@ element_at(E,[_|L],K):-
     K1 is K-1,
     element_at(E,L,K1).
 
-% replace Predicae:- Replace element at the given Index with the given element.
+% replace Predicate:- Replace element at the given Index with the given element.
 % replace(0,[[a],[b],[a],[d]],b,K).
 replace(I,L,E,K):-
     nth0(I,L,_,R),
