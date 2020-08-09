@@ -1,7 +1,7 @@
 /*You can run KakuroReeKULeuven.pl on https://swish.swi-prolog.org/. Write KakuroReeKULeuven.pl in the search bar and then select.
-Kakuro is a game. The goal is to fill in the white squares of the Kakuro grids using only the numbers 1 to 9. Each Kakuro is made up of several blocks arranged in rows and columns, limited by black boxes, in the same way as
-crossword. These boxes must be filled in with figures whose sum corresponds to the number indicated in the black box (at the bottom, for the vertical block, at the top for the
-horizontal). No number must appear twice in the same block. Consider it following grid:
+Kakuro is a game. The goal is to fill in the white squares of the Kakuro grids using only the numbers 1 to 9. Each Kakuro is made up of several blocks arranged in 
+rows and columns, limited by black boxes, in the same way as crossword. These boxes must be filled in with figures whose sum corresponds to the number indicated in the 
+black box (at the bottom, for the vertical block, at the top for the horizontal). No number must appear twice in the same block. Consider it following grid:
                                                
                                                ____________________________________________
                                               |_____|________|__11V__|_4V____|_______|_____|
