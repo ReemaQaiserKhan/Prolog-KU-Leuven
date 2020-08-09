@@ -9,10 +9,10 @@ horizontal). No number must appear twice in the same block. Consider it followin
                                               |_17H_|___W____|__W____|__W____|__W____|__3V_|
                                               |__6H_|___W____|__W____|_3V,4H_|__W____|__W__|
                                               |_____|_10H____|___W___|__W____|__W____|__W__|
-                                              |_____|________|__3H__|___W____|_W_____|_____|
+                                              |_____|________|__3H__|___W____|__W____|_____|
                                               
                                               • W - White Boxes.
-                                              • The empty Boxes and the one with Values (e.g.5H,14V) are Black Boxes.
+                                              • The Empty Boxes and the one with values (e.g.5H,14V) are the Black Boxes.
                                               • H - Horizontal Sum
                                               • V - Vertical Sum
 
