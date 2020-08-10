@@ -11,7 +11,7 @@ Q Write a Prolog program that solves the cryptarithmetic puzzle.
 
 puzzle(X):-
     X=([G,R,E,E,N]+[V,I,O,L,E,T]=[I,N,D,I,G,O]),
-    Vars=[G,R,E,N,V,I,O,L,T], Vars ins 0..9,
+    Vars=[G,R,E,N,V,I,D,O,L,T], Vars ins 0..9,
     all_different(Vars),
     
     G*10000 + R*1000 + E*100 + E*10 + N +
@@ -27,10 +27,5 @@ puzzle(X):-
  /* Executing the Program:-
  ?-puzzle(X).
  OUTPUT:
- X = ([1, 0, 5, 5, 3]+[6, 4, 2, 8, 5, 9]=[4, 3, 223, 4, 1, 2])        0.458 seconds cpu time
- X = ([1, 0, 5, 5, 3]+[7, 4, 2, 8, 5, 9]=[4, 3, 323, 4, 1, 2])
- X = ([1, 0, 5, 5, 4]+[6, 3, 2, 7, 5, 8]=[3, 4, 303, 3, 1, 2])
- X = ([1, 0, 5, 5, 4]+[6, 8, 3, 2, 5, 9]=[8, 4, -147, 8, 1, 3])
- X = ([1, 0, 5, 5, 4]+[6, 9, 2, 3, 5, 8]=[9, 4, -238, 9, 1, 2])
- ...........................
+X = ([8, 0, 4, 4, 1]+[2, 3, 6, 9, 4, 5]=[3, 1, 7, 3, 8, 6])                 2.122 seconds cpu time
  */
