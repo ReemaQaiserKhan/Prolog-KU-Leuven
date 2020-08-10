@@ -27,5 +27,5 @@ puzzle(X):-
  /* Executing the Program:-
  ?-puzzle(X).
  OUTPUT:
-X = ([8, 0, 4, 4, 1]+[2, 3, 6, 9, 4, 5]=[3, 1, 7, 3, 8, 6])                 2.122 seconds cpu time
+ X = ([8, 0, 4, 4, 1]+[2, 3, 6, 9, 4, 5]=[3, 1, 7, 3, 8, 6])                 2.122 seconds cpu time
  */
