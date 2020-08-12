@@ -1,7 +1,7 @@
 /*You can run MoneyReeKULeuven.pl on https://swish.swi-prolog.org/. Write MoneyReeKULeuven.pl in the search bar and then select.
 Q Write a Prolog program that solves the cryptarithmetic puzzle.
 
-                                             SEND
+                                             GIVE
                                              MORE
                                           + -------
                                              MONEY
