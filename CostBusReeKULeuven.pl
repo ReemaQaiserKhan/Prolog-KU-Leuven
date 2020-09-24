@@ -1,4 +1,5 @@
-/*You can run CostBusReeKULeuven.pl on https://swish.swi-prolog.org/. Write CostBusReeKULeuven.pl in the search bar and then select.
+/*You can run CostBusReeKULeuven.pl on https://swish.swi-prolog.org/. Write CostBusReeKULeuven2.pl (First Approach) in the search bar and then select.
+Write CostBusReeKULeuven.pl (Second Approach) in the search bar and then select.
 Prolog August Examination 2016 Q5.
 The local school has n number of busses. Each bus makes a tour: it stops nt a sequence of stops and picks up all the children assigned to a stop. 
 Your Prolog predicates are intended to help with the planning of these tours. Some practicalities: • All the stops have mums given by Prolog atoms: 
@@ -22,6 +23,35 @@ first at leuven-station then at leuven-city-center and finally in heverlee.
 2) Write a predicate costBus that for a given tour determines the cost of the tour. We use a simple cost function: we add up the distances between the stops of the tour. 
 in the previous example this would give: 8 + 10 = 18. (we do not take into account the distance of the school to the first and last stop). */
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                                                         %Fisrt Approach
+distance(heverlee, leuven-city-center,10).
+distance(leuven-station, leuven-city-center,8).
+distance(a,b,2).
+distance(c,b,4).
+distance(heverlee,a,7).
+distance(heverlee,b,20).
+distance(leuven-city-center,a,5).
+distance(c,a,15).
+distance(leuven-city-center,c,33).
+distance(leuven-station,c,14).
+distance(c,leuven-city-center,33).
+
+ostBus([],0).
+costBus([X],0).
+costBus([H1,H2|Tail],Cost):-
+    distance(H1,H2,C1),
+    costBus([H2|Tail],C2),
+    Cost is C1+C2.
+    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/* Executing the program:-
+OUTPUT:
+?-costBus([leuven-station,leuven-city-center],C).
+C=8
+?- costBus([heverlee, leuven-city-center],C).
+C=10
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                                                         %Second Approach
 distance(heverlee, leuven-city-center,10).
 distance(leuven-station, leuven-city-center,8).
 distance(a,b,2).
