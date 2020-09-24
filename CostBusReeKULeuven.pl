@@ -36,7 +36,7 @@ distance(leuven-city-center,c,33).
 distance(leuven-station,c,14).
 distance(c,leuven-city-center,33).
 
-ostBus([],0).
+costBus([],0).
 costBus([X],0).
 costBus([H1,H2|Tail],Cost):-
     distance(H1,H2,C1),
