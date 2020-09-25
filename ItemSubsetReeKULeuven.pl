@@ -1,4 +1,5 @@
-/*You can run ItemSubsetReeKULeuven.pl on https://swish.swi-prolog.org/. Write ItemSubsetReeKULeuven.pl in the search bar and then select.
+/*You can run ItemSubsetReeKULeuven.pl on https://swish.swi-prolog.org/. Write ItemSubsetReeKULeuven.pl2 (First Approach) in the search bar and then select. 
+Write ItemSubsetReeKULeuven.pl (Second Approach) in the search bar and then select.
 Prolog January Examination 2020 Q4.
 You are given a set of items. Each item has a name, a weight and a value. For example, you have the following 4 items: an ax with weight 50 and value 40, a book of Norvig 
 with weight 50 and value 50, a box of cookies with weight 10 and value 5, and a laptop with weight 99 and value 60. 
@@ -6,10 +7,110 @@ with weight 50 and value 50, a box of cookies with weight 10 and value 5, and a 
 2) You have to compute all subsets of items (containing at least one element) such that their total weight is strictly smaller than a given weight W and their total value
 is strictly higher than a given V. In the case of our example there are 3 possible subsets that have a weight strictly smaller than 90 and value strictly higher than 40.
 namely 1) ax and box of cookies, 2) book of Norvig and box of cookies and 3) book of Norvig. Choose one of the 2 representations and define the predicate subset to compute such 
-subsets. Note that in general there can a finite number n of such iems.
+subsets. Note that in general there can a finite number n of such items.
 3) Write a predicate highest to find the list of all items with the highest value. You can again chose one of the representations.*/
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                                                    %First Approach
+item(ax,50,40).
+item(book, 50,50).
+item(cookies,10,5).
+item(laptop,99,60).
 
+subset(W,V):-
+    subsetsingle(W,V),
+    subset1stItem(W,V),
+    subset2ndItem(W,V),
+    subset3rdItem(W,V),
+    subset4thItem(W,V).
+
+subsetsingle(W,V):-
+     item(L,W1,V1),
+     W1=<W,
+     V1>V,
+     writeln(L),
+     writeln('_____').
+
+subset1stItem(W,V):-
+    findall(WI1,item(ax,WI1,_),A1),
+    findall(VI1,item(ax,_,VI1),A2),
+    item(L,W1,V1),
+    L\='ax',
+    W2 is W1+A1,
+    V2 is V1+A2,
+    W2=<W,
+    V2>V,
+    writeln('ax'),
+    writeln(L),
+    writeln('_____').
+    
+subset2ndItem(W,V):-
+    findall(WI1,item(book,WI1,_),A1),
+    findall(VI1,item(book,_,VI1),A2),
+    item(L,W1,V1),
+    L\='book',
+    W2 is W1+A1,
+    V2 is V1+A2,
+    W2=<W,
+    V2>V,
+    writeln('book'),
+    writeln(L),
+    writeln('_____').
+    
+subset3rdItem(W,V):-
+    findall(WI1,item(cookies,WI1,_),A1),
+    findall(VI1,item(cookies,_,VI1),A2),
+    item(L,W1,V1),
+    L\='cookies',
+    W2 is W1+A1,
+    V2 is V1+A2,
+    W2=<W,
+    V2>V,
+    writeln('cookies'),
+    writeln(L),
+    writeln('_____').
+    
+subset4thItem(W,V):-
+    findall(WI1,item(laptop,WI1,_),A1),
+    findall(VI1,item(laptop,_,VI1),A2),
+    item(L,W1,V1),
+    L\='laptop',
+    W2 is W1+A1,
+    V2 is V1+A2,
+    W2=<W,
+    V2>V,
+    writeln('laptop'),
+    writeln(L).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/* Execute the Program:-
+?-subset(90,40).
+book
+_____
+ax
+cookies
+_____
+book
+cookies
+_____
+cookies
+ax
+_____
+cookies
+book
+_____
+false
+?-subset(101,56).
+laptop
+_____
+ax
+book
+_____
+book
+ax
+_____
+false
+*/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                                                    %Second Approach
 % facts
 item(ax,50,40).
 item(book, 50,50).
