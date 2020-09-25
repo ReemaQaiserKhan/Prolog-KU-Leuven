@@ -21,8 +21,7 @@ subset(W,V):-
      item(L,W1,V1),
      W1=<W,
      V1>V,
-     writeln(L),
-     writeln('_____'),
+     writeln([L]),
     %For checking pair of items
     item(G,O1,O2),
     item(P,A1,A2),
@@ -31,44 +30,47 @@ subset(W,V):-
     R2 is O2+A2,
     R1=<W,
     R2>V,
-    writeln(G),
-    writeln(P),
-    writeln('______').
+    append([G],[P],List),
+    writeln(List).
+
+highest(V):-
+    item(Li,_,V1i),
+    V1i>V,
+    findall(Li,item(Li,_,_),L3),
+     writeln(L3).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 /* Execute the Program:-
 ?-subset(90,40).
 OUTPUT:
-book
-_____
-ax
-cookies
-______
+[book]
+[ax, cookies]
 1true
-book
-cookies
-______
+[book, cookies]
 2true
-cookies
-ax
-______
+[cookies, ax]
 3true
-cookies
-book
-______
+[cookies, book]
 4true
 false
 ?-subset(101,56).
-laptop
-_____
-ax
-book
-______
+[laptop]
+[ax, book]
 1true
-book
-ax
-______
+[book, ax]
 2true
 false
+?-highest(30).
+OUTPUT:
+[ax]
+1true
+[book]
+2true
+[laptop]
+3true
+?-highest(55).
+OUTPUT:
+[[laptop]
+1true
 */                                                                    
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                                                     %Second Approach
