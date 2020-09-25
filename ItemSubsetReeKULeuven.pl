@@ -1,5 +1,5 @@
-/*You can run ItemSubsetReeKULeuven.pl on https://swish.swi-prolog.org/. Write ItemSubsetReeKULeuven.pl2 (First Approach) in the search bar and then select. 
-Write ItemSubsetReeKULeuven.pl (Second Approach) in the search bar and then select.
+/*You can run ItemSubsetReeKULeuven.pl on https://swish.swi-prolog.org/. Write ItemSubsetReeKULeuven3.pl (First Approach) in the search bar and then select. 
+Write ItemSubsetReeKULeuven2.pl (Second Approach) in the search bar and then select. Write ItemSubsetReeKULeuven.pl (Third Approach) in the search bar and then select.
 Prolog January Examination 2020 Q4.
 You are given a set of items. Each item has a name, a weight and a value. For example, you have the following 4 items: an ax with weight 50 and value 40, a book of Norvig 
 with weight 50 and value 50, a box of cookies with weight 10 and value 5, and a laptop with weight 99 and value 60. 
@@ -11,6 +11,77 @@ subsets. Note that in general there can a finite number n of such items.
 3) Write a predicate highest to find the list of all items with the highest value. You can again chose one of the representations.*/
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                                                     %First Approach
+item(ax,50,40).
+item(book, 50,50).
+item(cookies,10,5).
+item(laptop,99,60).
+
+subset(W,V):-
+     item(L,W1,V1),
+     W1=<W,
+     V1>V,
+     writeln(L),
+     writeln('_____'),
+    item(G,O1,O2),
+    item(P,A1,A2),
+    G\=P,
+    R1 is O1+A1,
+    R2 is O2+A2,
+    R1=<W,
+    R2>V,
+    writeln(G),
+    writeln(P),
+    writeln('______').
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/* Execute the Program:-
+?-subset(90,40).
+OUTPUT:
+book
+_____
+ax
+cookies
+______
+1true
+book
+cookies
+______
+2true
+cookies
+ax
+______
+3true
+cookies
+book
+______
+4true
+false
+?-
+laptop
+_____
+ax
+book
+______
+1true
+book
+ax
+______
+2true
+false
+?-subset(101,56).
+laptop
+_____
+ax
+book
+______
+1true
+book
+ax
+______
+2true
+false
+*/                                                                    
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                                                    %Second Approach
 item(ax,50,40).
 item(book, 50,50).
 item(cookies,10,5).
@@ -83,6 +154,7 @@ subset4thItem(W,V):-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 /* Execute the Program:-
 ?-subset(90,40).
+OUTPUT:
 book
 _____
 ax
@@ -110,7 +182,7 @@ _____
 false
 */
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                                                                    %Second Approach
+                                                                    %Third Approach
 % facts
 item(ax,50,40).
 item(book, 50,50).
