@@ -17,11 +17,13 @@ item(cookies,10,5).
 item(laptop,99,60).
 
 subset(W,V):-
+    %For checking single items
      item(L,W1,V1),
      W1=<W,
      V1>V,
      writeln(L),
      writeln('_____'),
+    %For checking pair of items
     item(G,O1,O2),
     item(P,A1,A2),
     G\=P,
