@@ -1,4 +1,5 @@
-% You can run TopScoreReeKULeuven.pl on https://swish.swi-prolog.org/. Write TopScoreReeKULeuven.pl in the search bar and then select.
+% You can run TopScoreReeKULeuven.pl on https://swish.swi-prolog.org/. Write TopScoreReeKULeuven2.pl (First Approach)in the search bar and then select. Write TopScoreReeKULeuven.pl in 
+(Second Approach) the search bar and then select.
 % Prolog Sample Examination Q4.
 /* After the exams of January, Eveline has the scores of the students for
 the courses. For example, student Danny obtained a 20 on FAI and a
@@ -13,6 +14,53 @@ a top score.
 In the above example, Danny is the student with the top score
 for FAI, whereas for UAI it is Jonas. */
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                                                  %First Approach
+score(danny,fai,20).
+score(danny,plpm,15).
+score(toon,plpm,18).
+score(toon,uai,4).
+
+max([],0).
+max([H|T],Max):-
+    max(T,TailMax),
+    H>TailMax,
+    Max is H.
+max([H|T],Max):-
+    max(T,TailMax),
+    H=<TailMax,
+    Max is TailMax.
+%facts
+topscore(X):-
+    findall(Score,score(_,X,Score),List),
+    writeln(List),
+    max(List,Max),
+    findall(Name,score(Name,_,Max),StudentName),
+    writeln(StudentName).
+%terms
+%topscoreterms([score(danny,fai,20),score(danny,plpm,15),score(toon,plpm,18),score(toon,uai,4)],fai).
+topscoreterms(Term,X):-
+    findall(Score,member(score(_,X,Score),Term),List),
+    writeln(List),
+    max(List,Max),
+    findall(Name,member(score(Name,_,Max),Term),StudentName),
+    writeln(StudentName).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Execute the Program:-
+?-topscoreterms([score(danny,fai,20),score(danny,plpm,15),score(toon,plpm,18),score(toon,uai,4)],fai).
+OUTPUT:
+[20]
+[danny]
+1true
+false
+?-topscore(fai).
+OUTPUT:
+[20]
+[danny]
+1true
+false
+*/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                                                  %Second Approach
 % Facts
 score(danny,fai,20).
 score(danny, plpm,15).
