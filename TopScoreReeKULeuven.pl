@@ -45,7 +45,7 @@ topscoreterms(Term,X):-
     findall(Name,member(score(Name,_,Max),Term),StudentName),
     writeln(StudentName).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Execute the Program:-
+/* Execute the Program:-
 ?-topscoreterms([score(danny,fai,20),score(danny,plpm,15),score(toon,plpm,18),score(toon,uai,4)],fai).
 OUTPUT:
 [20]
