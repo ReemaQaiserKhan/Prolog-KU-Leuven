@@ -1,5 +1,5 @@
 % You can run TopScoreReeKULeuven.pl on https://swish.swi-prolog.org/. Write TopScoreReeKULeuven2.pl (First Approach)in the search bar and then select. Write TopScoreReeKULeuven.pl in 
-(Second Approach) the search bar and then select.
+%(Second Approach) the search bar and then select.
 % Prolog Sample Examination Q4.
 /* After the exams of January, Eveline has the scores of the students for
 the courses. For example, student Danny obtained a 20 on FAI and a
