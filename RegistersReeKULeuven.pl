@@ -1,4 +1,4 @@
-/* You can run RegistersReeKULeuven.pl on https://swish.swi-prolog.org/. Write RegistersReeKULeuven.pl in the search bar and then select.
+/* You can run RegistersReeKULeuven.pl2 (First Approach),RegistersReeKULeuven.pl (Second Approach) on https://swish.swi-prolog.org/. Write RegistersReeKULeuven.pl in the search bar and then select.
 Prolog January Examination 2017 Q5.
 5. You have a machine with registers n up to rn, which are organised in a ring, so that you can only copy the contents of a register from 
 ri to for 1 < i < n and from rn to ri, with the instruction copy(i) (1 < i < n). Note that copy(i) does not change the contents of register i for 1 < I < n.
@@ -17,6 +17,57 @@ should compute a b b d.
 7) Now suppose that you are Interested in finding the shortest instruction sequence for transforming an initial set into a final set using iterative deepening..
 Write a predicate for this. */
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                                                   %First Approach
+register(1,a).
+register(2,b).
+register(3,a).
+register(4,d).
+
+elementat(X,[X|_],1).
+elementat(X,[_|L],K):-
+    K>1,
+    K1 is K-1,
+    elementat(X,L,K1).
+
+replace(I,L,E,K):-
+    nth0(I,L,_,R),
+    nth0(I,K,E,R).
+
+copy(C,R,P):-
+    elementat(X,R,C),
+    I is C,
+    replace(I,R,X,P).
+
+swap(SI1,SI2,L,L2):-
+    elementat(X1,L,SI1),
+    SI11 is SI1-1,
+    SI is SI2-1,
+    replace(SI,L,X1,R1),
+    elementat(X2,L,SI2),
+    replace(SI11,R1,X2,L2).
+    
+
+seqInstructions(C1,C2,S1,S2,S3,S4):-
+    findall(Register,register(_,Register),RegisterList),
+    copy(C1,RegisterList,P),
+    writeln(P),
+    copy(C2,P,P2),
+    writeln(P2),
+    swap(S1,S2,P2,P3),
+    writeln(P3),
+    swap(S3,S4,P3,P4),
+    writeln(P4).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/* execute the Program:-
+?-seqInstructions(2,1,2,3,2,4).
+OUTPUT:
+[a, b, b, d]
+[a, a, b, d]
+[a, b, a, d]
+[a, d, a, b]
+*/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                                                   %Second Approach
 register(a,b,a,d).
 
 % element_at predicate:- Gives element in the list with provided position
