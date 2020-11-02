@@ -45,13 +45,10 @@ max([H|T],Max):-
     Max is Tailmax.
 
 %Return item with highest weight and volume in List 
-%highest(HighestItemWeight,HighestItemVolume).
-highest(S,R):-
-    findall(Weight,item(_,Weight,_),WeightList),
-    findall(Volume,item(_,_,Volume),VolumeList),
-    max(WeightList,A1),
-    item(S,A1,_),
-    max(VolumeList,A2),
+%highest(HighestItemValue).
+highest(R):-
+    findall(Value,item(_,_,Value),ValueList),
+    max(ValueList,A2),
     item(R,_,A2).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 /*Execute the Program:-
@@ -78,10 +75,9 @@ L = laptop,
 P = book
 L = laptop,
 P = cookies
-?-highest(HighestItemWeight,HighestItemVolume).
+?-highest(HighestItemValue).
 OUTPUT:
-HighestItemVolume = book,
-HighestItemWeight = laptop
+HighestItemValue = book,
 */
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                                                             %First Approach
