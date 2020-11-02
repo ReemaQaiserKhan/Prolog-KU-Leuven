@@ -10,7 +10,81 @@ namely 1) ax and box of cookies, 2) book of Norvig and box of cookies and 3) boo
 subsets. Note that in general there can a finite number n of such items.
 3) Write a predicate highest to find the list of all items with the highest value. You can again chose one of the representations.*/
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                                                                    %First Approach
+                                                                        %Latest Update [Copy and paste code in swish]
+item(ax,50,40).
+item(book, 50,501).
+item(cookies,10,5).
+item(laptop,99,60).
+
+%For checking single items
+check_singleitem(W,V,L):-
+     item(L,W1,V1),
+     W1 =< W,
+     V1 > V,
+     write(L).
+
+%checksubset(200,20,I,P).
+checksubset(W,V,L,P):-
+    check_singleitem(W,V,L),
+    item(L,WL,VL),
+    item(P,WP,VP),
+    P \= L,
+    WR is WL+WP,
+    VR is VL+VP,
+    WR =< W,
+    VR > V.
+
+max([],0).
+max([H|T],Max):-
+    max(T,Tailmax),
+    H>Tailmax,
+    Max is H.
+max([H|T],Max):-
+    max(T,Tailmax),
+    H=<Tailmax,
+    Max is Tailmax.
+
+%Return item with highest weight and volume in List 
+%highest(HighestItemWeight,HighestItemVolume).
+highest(S,R):-
+    findall(Weight,item(_,Weight,_),WeightList),
+    findall(Volume,item(_,_,Volume),VolumeList),
+    max(WeightList,A1),
+    item(S,A1,_),
+    max(VolumeList,A2),
+    item(R,_,A2).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Execute the Program:-
+?-checksubset(200,20,L,P).
+OUTPUT:-
+ax
+L = ax,
+P = book
+L = ax,
+P = cookies
+L = ax,
+P = laptop
+book
+L = book,
+P = ax
+L = book,
+P = cookies
+L = book,
+P = laptop
+laptop
+L = laptop,
+P = ax
+L = laptop,
+P = book
+L = laptop,
+P = cookies
+?-highest(HighestItemWeight,HighestItemVolume).
+OUTPUT:
+HighestItemVolume = book,
+HighestItemWeight = laptop
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                                                            %First Approach
 item(ax,50,40).
 item(book, 50,50).
 item(cookies,10,5).
