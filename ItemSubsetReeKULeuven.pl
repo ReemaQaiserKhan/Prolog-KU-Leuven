@@ -44,7 +44,7 @@ max([H|T],Max):-
     H=<Tailmax,
     Max is Tailmax.
 
-%Return item with highest weight and volume in List 
+%Return item with highest weight and value in List 
 %highest(HighestItemValue).
 highest(R):-
     findall(Value,item(_,_,Value),ValueList),
