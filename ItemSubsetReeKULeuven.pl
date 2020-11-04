@@ -47,7 +47,7 @@ omit(X,[H|L],[H|R]) :-
     omit(X,L,R).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 /*Execute the Program:
-?-comb([item(ax,50,40),item(book,60,40),item(cookie,10,60),item(laptop,40,30)],W,V,R,100,60).  %Weight here is 100 and Value here is 60
+?-comb([item(ax,50,40),item(book,60,40),item(cookie,10,30),item(laptop,40,30)],W,V,R,100,60).  %Weight here is 100 and Value here is 60
 OUTPUT:-
 R = [book, laptop],
 V = 70,
