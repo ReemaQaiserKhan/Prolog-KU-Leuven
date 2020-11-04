@@ -10,6 +10,81 @@ namely 1) ax and box of cookies, 2) book of Norvig and box of cookies and 3) boo
 subsets. Note that in general there can a finite number n of such items.
 3) Write a predicate highest to find the list of all items with the highest value. You can again chose one of the representations.*/
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                                                    %Latest Update [Copy and paste code in swish] [4/11/2020]
+
+sum([],0).
+sum([H|T],N):-sum(T,N1),N is N1+H.
+
+%Combinations
+comb(InList,S11,S21,Out,W,V) :-
+    splitSet(InList,_,SubList),
+    SubList = [_|_],     /* disallow empty list */
+    permute(SubList,List),
+    findall(W1,member(item(_,W1,_),List),KJ),
+    findall(V1,member(item(_,_,V1),List),VJ),
+    findall(I1,member(item(I1,_,_),List),IJ),
+    sum(KJ,S1),
+    sum(VJ,S2),
+    S1 =< W,
+    S2>V,
+    S11 is S1,
+    S21 is S2,
+    Out=IJ.
+    
+splitSet([ ],[ ],[ ]).
+splitSet([H|T],[H|L],R) :-
+    splitSet(T,L,R).
+splitSet([H|T],L,[H|R]) :-
+    splitSet(T,L,R).
+
+permute([ ],[ ]) :- !.
+permute(L,[X|R]) :-
+    omit(X,L,M),
+    permute(M,R).
+
+omit(H,[H|T],T).
+omit(X,[H|L],[H|R]) :-
+    omit(X,L,R).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/*Execute the Program:
+?-comb([item(ax,50,40),item(book,60,40),item(cookie,10,60),item(laptop,40,30)],W,V,R,100,60).  %Weight here is 100 and Value here is 60
+OUTPUT:-
+R = [book, laptop],
+V = 70,
+W = 100
+R = [laptop, book],
+V = 70,
+W = 100
+R = [book, cookie],
+V = W, W = 70
+R = [cookie, book],
+V = W, W = 70
+R = [ax, laptop],
+V = 70,
+W = 90
+R = [laptop, ax],
+V = 70,
+W = 90
+R = [ax, cookie],
+V = 70,
+W = 60
+R = [cookie, ax],
+V = 70,
+W = 60
+R = [ax, cookie, laptop],
+V = W, W = 100
+R = [ax, laptop, cookie],
+V = W, W = 100
+R = [cookie, ax, laptop],
+V = W, W = 100
+R = [cookie, laptop, ax],
+V = W, W = 100
+R = [laptop, ax, cookie],
+V = W, W = 100
+R = [laptop, cookie, ax],
+V = W, W = 100
+*/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                                                         %Latest Update [Copy and paste code in swish]
 item(ax,50,40).
 item(book, 50,501).
