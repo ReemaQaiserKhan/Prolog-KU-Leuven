@@ -45,6 +45,28 @@ permute(L,[X|R]) :-
 omit(H,[H|T],T).
 omit(X,[H|L],[H|R]) :-
     omit(X,L,R).
+    
+    
+
+max([],0).
+max([H|T],Max):-
+    max(T,TailMax),
+    H>TailMax,
+    Max is H.
+max([H|T],Max):-
+    max(T,TailMax),
+    H=<TailMax,
+    Max is TailMax.
+    
+%Highest Item
+highest(List,HighestList):-
+    findall(W1,member(item(_,W1,_),List),WList),
+    findall(V1,member(item(_,_,V1),List),VList),
+    append(WList,VList,NList),
+    max(NList,NMax),
+    findall(I1,member(item(I1,NMax,_),List),I1List),
+    findall(I2,member(item(I2,_,NMax),List),I2List),
+    append(I1List,I2List,HighestList).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 /*Execute the Program:
 ?-comb([item(ax,50,40),item(book,60,40),item(cookie,10,30),item(laptop,40,30)],W,V,R,100,60).  %Weight here is 100 and Value here is 60
@@ -83,6 +105,11 @@ R = [laptop, ax, cookie],
 V = W, W = 100
 R = [laptop, cookie, ax],
 V = W, W = 100
+
+?-highest([item(ax,50,60),item(book,60,40),item(cookie,10,30),item(laptop,40,30)],L). %highest value is 60
+OUTPUT:
+L = [book, ax]
+
 */
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                                                         %Latest Update [Copy and paste code in swish]
