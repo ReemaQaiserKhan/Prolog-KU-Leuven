@@ -9,6 +9,54 @@ Note also that [5,2,3,1,4] is not a solution, because 4+5+2 is larger than 10. F
 In a next step, try to avoid solutions that are just variants (e.g. the rotations and the anti-clockwise readings). 
 Indicate clearly whether you are using CLP(R), CLP(FD) or just nor-mal Prolog. */
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                                                       Latest Update [9-11-2020]
+ :-use_module(library(clpfd)).
+clock_round(A,Sum,L1):-
+K=[1,2,3,4,5,6,7,8,9,10,11,12],K ins 1..12,
+    splitSet(K,_,SubList),
+    SubList=[_|_], 
+    permute(SubList,M),
+    sum(M,N1),
+    N1=Sum,
+    len(M,Len),
+    Len=A,
+    L1=M.
+
+len([],0).
+len([H|T],V):-
+    len(T,V1),
+    V is V1+1.
+    
+sum([],0).
+sum([H|T],N):-
+    sum(T,N1),
+    N is H+N1.
+
+splitSet([ ],[ ],[ ]).
+splitSet([H|T],[H|L],R) :-
+    splitSet(T,L,R).
+splitSet([H|T],L,[H|R]) :-
+    splitSet(T,L,R).
+
+permute([ ],[ ]) :- !.
+permute(L,[X|R]) :-
+    omit(X,L,M),
+    permute(M,R).
+
+omit(H,[H|T],T).
+omit(X,[H|L],[H|R]) :-
+    omit(X,L,R).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/*Execute the Program   [Please note that Swish will have a hard time executing this program, you may find yourself staring at the spinning sun and then time out]
+?-clock_round(3,7,L1).
+OUTPUT:-
+[1,4,2]
+[2,1,4]
+[4,2,1]
+[1,2,4]
+[4,1,2]
+*/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 :-use_module(library(clpfd)).
 % clock Predicate:- The main predicate.
