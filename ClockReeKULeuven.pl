@@ -10,7 +10,6 @@ In a next step, try to avoid solutions that are just variants (e.g. the rotation
 Indicate clearly whether you are using CLP(R), CLP(FD) or just nor-mal Prolog. */
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                                                        Latest Update [9-11-2020]
- :-use_module(library(clpfd)).
 clock_round(A,Sum,L1):-
 K=[1,2,3,4,5,6,7,8,9,10,11,12],K ins 1..12,
     splitSet(K,_,SubList),
