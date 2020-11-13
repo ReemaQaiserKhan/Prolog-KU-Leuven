@@ -1,5 +1,4 @@
-/* Write a Prolog Program that finds the common elements in two lists. Lets say I have two lists [1,2,3,4] and [2,4,5,1]. The common elements in these two lists are [1,2].
-*/
+% Write a Prolog Program that finds the common elements in two lists. Lets say I have two lists [1,2,3,4] and [2,4,5,1]. The common elements in these two lists are [1,2].
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 common_element([H|T],[H2|T2]):-
