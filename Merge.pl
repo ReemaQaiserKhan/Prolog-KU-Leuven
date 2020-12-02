@@ -1,5 +1,6 @@
 /* Merge: Merge a list in a way that if 2 consecutive numbers in a list are a same number they should merge into one (i,e, [4,4,0,0] -> [8,0,0,0].*/
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 merge([H|T],L):-
    merge2([H|T],J),
     (
