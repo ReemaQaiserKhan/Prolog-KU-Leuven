@@ -1,4 +1,4 @@
-/* Write a prolog progra that deletes thefirs three eleets from a list and the last three elements from a list.
+/* Write a prolog progra that deletes the first three elements from a list and the last three elements from a list.
 */
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
