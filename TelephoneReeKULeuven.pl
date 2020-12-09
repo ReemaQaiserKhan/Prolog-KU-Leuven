@@ -11,6 +11,53 @@ e.g.: ?- jean @< maria. succeeds.
 (c) Define for both cases the predicate possadd that for a given set S and for a ground tel/2 term X checks whether X is already in the set S and if not the predicate 
 should add X to S. */
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Facts                                                                     %Update:9/12/2020
+tel(jack,1234).
+tel(john,3432).
+tel(mary,4444).
+
+possadd_facts(A,X):-
+    findall(P1,tel(P1,_),NameList),
+    findall(P2,tel(_,P2),NumList),
+    join(NameList,NumList,List),
+    possadd2(List,A,NameList,NumList,X).
+
+join([],[],[]).
+join([H1|T1],[H2|T2],[K|L]):-
+    K=tel(H1,H2),
+    join(T1,T2,L).
+
+%Terms
+possadd_term(List,A,X):-
+    findall(P1,member(tel(P1,_),List),NameList),
+    findall(P2,member(tel(_,P2),List),NumList),
+    possadd2(List,A,NameList,NumList,X).
+ 
+possadd2(_,[],_,_,[]).
+possadd2(List,[A|L],NameList,NumList,[X|O]):-
+    A=tel(Z1,Z2),
+    \+member(Z1,NameList),
+    \+member(Z2,NumList),
+    append(List, [A], X),
+    possadd2(List,L,NameList,NumList,O).
+possadd2(List,[A|L],NameList,NumList,O):-
+    A=tel(Z1,Z2),
+    member(Z1,NameList),
+    member(Z2,NumList),
+    possadd2(List,L,NameList,NumList,O).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/*Execute the Program:-
+?-possadd_facts([tel(jack,1234), tel(gorge,5555)],Q).
+OUTPUT:
+Q = [[tel(jack, 1234), tel(john, 3432), tel(mary, 4444), tel(gorge, 5555)]]
+false
+?-possadd_term([tel(jack,1234),tel(john,3432),tel(mary,4444)],[tel(jack,1234), tel(gorge,5555)],Q).
+OUTPUT:
+Q = [[tel(jack, 1234), tel(john, 3432), tel(mary, 4444), tel(gorge, 5555)]]
+false
+*/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 % Facts
 tel(maria,2654).
 tel(jean,2111).
