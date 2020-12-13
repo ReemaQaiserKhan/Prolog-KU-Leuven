@@ -10,7 +10,7 @@ birthday falls.
 5- Tara was born before Brenda, whose birthday wasn't on Friday. Mary wasn't born in July.*/
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :-use_module(library(clpfd)).
-puzzel(Sisters,Months,Days):-
+puzzle(Sisters,Months,Days):-
 Sisters=[Paula, Brenda, Abigail, Mary, Tara], Sisters ins 1..5,
 Months=[Feburary, March, June, July, December], Months ins 1..5,
 Days=[Monday, Wednesday, Friday, Saturday, Sunday], Days ins 1..5,
@@ -33,7 +33,7 @@ all_different(Days),
 labeling([], Sisters), labeling([],Months), labeling([], Days).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 /* Executing Program:
-?-puzzel(Sisters,Months,Days).
+?-puzzle(Sisters,Months,Days).
 OUTPUT:
 Days = [1, 3, 4, 2, 5],
 Months = [3, 1, 5, 2, 4],
