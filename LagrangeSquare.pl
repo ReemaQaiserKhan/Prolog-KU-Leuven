@@ -1,11 +1,11 @@
 /* Exam 2017-2018.
-Each number can be written as sum of 4 squares (natural numbers) (Langrange's Square). Write predicate to get these 4 squares. Result needs to be ordered list. 
+Each number can be written as sum of 4 squares (natural numbers) (Lagrange's Square). Write predicate to get these 4 squares. Result needs to be ordered list. 
 You can solve with CLPFD or normal prolog.
 */
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :-use_module(library(clpfd)).
 
-langrange(Number,X1):-
+lagrange(Number,X1):-
     X=[A,B,C,D],X ins 0..sup,
     (A*A)+(B*B)+(C*C)+(D*D)#=Number,
     labeling([],X),
@@ -31,19 +31,19 @@ concatenate([Item|List1],List2,[Item|List3]) :-
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 /* Execute the Program:-
-?-langrange(3,X).
+?-lagrange(3,X).
 OUTPUT:
 X = [0, 1, 1, 1]
 X = [0, 1, 1, 1]
 X = [0, 1, 1, 1]...
 
-?-langrange(17,X).
+?-lagrange(17,X).
 OUTPUT:
 X = [0, 0, 1, 4]
 X = [0, 0, 1, 4]
 X = [0, 0, 1, 4]...
 
-?-langrange(317,X).
+?-lagrange(317,X).
 OUTPUT:
 X = [0, 0, 11, 14]
 X = [0, 0, 11, 14]
