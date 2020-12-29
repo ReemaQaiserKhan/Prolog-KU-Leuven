@@ -1,6 +1,14 @@
+/*Prolog January Examination 2020 Q3.
+Consider the following puzzle. Take the twelve numbers on the face of a clock, namely 1, 2, 3, ..., 11, 12. We want to rearrange the numbers (keeping them in a circle) in 
+such a way that no triplet of adjacent numbers has a sum higher than 21. Write the predicate clock_round(N, Sum, Xs) that can solve the above puzzle and related ones. 
+For the above puzzle the call is ?- clock_round(12, 21, Xs). It finds a lot of solutions for Xs (e.g. [12,2,6,11,4,5,9,7,3,10,8,1] ..., and [12,7,2,11,6,4,10,5,3,9,8,1)). 
+If you take the numbers 1 upto 5, the call ?- clock_round(5, 10, Xs) finds [5,2,3,4,1] and [5,3,2,4,1] as solutions for Xs. 
+Note that all rotations of [5,2,3,4,1] are also valid solutions e.g [2,3,4,1,5], [3,4,1,5, 2], , as is [5,1,4,3,2] (when you read the numbers anti-clockwise) and its rotations. 
+Note also that [5,2,3,1,4] is not a solution, because 4+5+2 is larger than 10. First write a version of clock_round/3 that solves the puzzles. 
+In a next step, try to avoid solutions that are just variants (e.g. the rotations and the anti-clockwise readings). 
+Indicate clearly whether you are using CLP(R), CLP(FD) or just normal Prolog. 
 
-
-
+Note:- The code till check_solution is for Part 1. The remaining covers Part 2. */
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 :-use_module(library(clpfd)).
 
