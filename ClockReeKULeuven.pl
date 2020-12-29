@@ -9,7 +9,7 @@ Note also that [5,2,3,1,4] is not a solution, because 4+5+2 is larger than 10. F
 In a next step, try to avoid solutions that are just variants (e.g. the rotations and the anti-clockwise readings). 
 Indicate clearly whether you are using CLP(R), CLP(FD) or just normal Prolog. */
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                                                                                  Part 1
+ %Part 1
  
 clock_round(N,Sum,Xs):-
     S=1,
@@ -61,7 +61,7 @@ Xs = [[2, 3, 1, 4, 5], [2, 3, 4, 1, 5], [3, 2, 1, 4, 5], [3, 2, 4, 1, 5], [3, 4,
 
 */
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                                                                                 Part 2 Removing Variants
+%Part 2 Removing Variants
                                                                       
 clock_round(N,Sum,Xs):-
     S=1,
