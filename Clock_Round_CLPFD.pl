@@ -65,7 +65,7 @@ remove_rotations([H|T],Xs):-
 remove_rotations1([],_,[]).
 remove_rotations1([H|T],[H1|T1],[H|List]):-
     rotation(H,Rot),
-        \+member(Rot,[H1|T1]),
+        \+member(Rot,[H1|T1]),!,
     remove_rotations1(T,[H1|T1],List).
 remove_rotations1([H|T],[H1|T1],List):-
     rotation(H,Rot),
@@ -82,7 +82,7 @@ remove_anticlocks([H|T],Xs):-
 remove_anticlocks1([],_,[]).
 remove_anticlocks1([H|T],[H1|T1],[H|List]):-
     anticlock(H,Anticlock),
-        \+member(Anticlock,[H1|T1]),
+        \+member(Anticlock,[H1|T1]),!,
     remove_anticlocks1(T,[H1|T1],List).
 remove_anticlocks1([H|T],[H1|T1],List):-
     anticlock(H,Anticlock),
