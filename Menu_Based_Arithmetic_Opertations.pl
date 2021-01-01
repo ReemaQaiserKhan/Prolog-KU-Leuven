@@ -24,16 +24,16 @@ arithmetic_operations(X,Y) :-
 Choose option: 1. Addition 2.Subtract 3. Multiplication 4. Division 5. stop
 1
 Answer = 9
-Choose option: 1. Addition 2.Subtract 3. Multiplication 4. Division 5. stop
+Choose option: 1. Addition 2.Subtract 3. Multiplication 4. Division 5. Stop
 2
 Answer = 1
-Choose option: 1. Addition 2.Subtract 3. Multiplication 4. Division 5. stop
+Choose option: 1. Addition 2.Subtract 3. Multiplication 4. Division 5. Stop
 3
 Answer = 20
-Choose option: 1. Addition 2.Subtract 3. Multiplication 4. Division 5. stop
+Choose option: 1. Addition 2.Subtract 3. Multiplication 4. Division 5. Stop
 4
 Answer = 1.25
-Choose option: 1. Addition 2.Subtract 3. Multiplication 4. Division 5. stop
+Choose option: 1. Addition 2.Subtract 3. Multiplication 4. Division 5. Stop
 5
 1true
 */
