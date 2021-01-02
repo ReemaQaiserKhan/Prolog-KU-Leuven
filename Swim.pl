@@ -1,4 +1,4 @@
-/*
+/* Prolog Exam 2016 January, Q3.
 To add a little fun to the sweltering summer heat, 4Bs Boutique in downtown Knokke announced that they were sponsoring a swimsuit contest. Prizes would be awarded to the winners
 and judging would be held the following weekend. Interested contestants should sign up and the 4Bs clientele set up quite a buzz over it all, with speculation running high for 
 both who would sign up and who would win, if they did sign up. Write a predicate swim that determines the full name of the five win-ning contestants (one first name was Sarah and
