@@ -10,7 +10,7 @@ namely 1) ax and box of cookies, 2) book of Norvig and box of cookies and 3) boo
 subsets. Note that in general there can a finite number n of such items.
 3) Write a predicate highest to find the list of all items with the highest value. You can again chose one of the representations.*/
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
+                                                                 %[Updated:1/4/2021]
 
 comb(InList,Items,W,V) :-
     subset(Subset,InList),
