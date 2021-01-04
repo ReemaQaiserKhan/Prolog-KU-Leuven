@@ -9,6 +9,44 @@ is strictly higher than a given V. In the case of our example there are 3 possib
 namely 1) ax and box of cookies, 2) book of Norvig and box of cookies and 3) book of Norvig. Choose one of the 2 representations and define the predicate subset to compute such 
 subsets. Note that in general there can a finite number n of such items.
 3) Write a predicate highest to find the list of all items with the highest value. You can again chose one of the representations.*/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+comb(InList,Items,W,V) :-
+    subset(Subset,InList),
+    findall(W1,member(item(_,W1,_),Subset),WL),
+    findall(V1,member(item(_,_,V1),Subset),VL),
+    findall(I1,member(item(I1,_,_),Subset),Items),
+    
+    sum(WL,SumW),
+    SumW<W,
+    sum(VL,SumV),
+    SumV>V.
+
+subset(S,L):-
+    append(_L1,L2,L),
+    append(S,_L3,L2).
+
+sum([],0).
+sum([H|T],Sum):-
+    sum(T,SumN),
+    Sum is SumN+H.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/*Execute the Program:-
+?-comb([item(ax,50,40),item(book,60,40),item(cookie,10,30),item(laptop,40,30)],Items,150,10).
+OUTPUT:
+Items = [ax]
+Items = [ax, book]
+Items = [ax, book, cookie]
+Items = [book]
+Items = [book, cookie]
+Items = [book, cookie, laptop]
+Items = [cookie]
+Items = [cookie, laptop]
+Items = [laptop]
+false
+*/
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                                                     %Latest Update [Copy and paste code in swish] [4/11/2020]
 
