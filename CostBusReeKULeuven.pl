@@ -22,6 +22,31 @@ Knowing this,
 first at leuven-station then at leuven-city-center and finally in heverlee. 
 2) Write a predicate costBus that for a given tour determines the cost of the tour. We use a simple cost function: we add up the distances between the stops of the tour. 
 in the previous example this would give: 8 + 10 = 18. (we do not take into account the distance of the school to the first and last stop). */
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                                                            [Updated: 5/1/2021]
+tour(leuven-station,leuven-city-center,heverlee).
+tour(a,b,c).
+
+distance(heverlee, leuven-city-center,10).
+distance(leuven-station, leuven-city-center,8).
+distance(a,b,2).
+distance(c,b,4).
+
+costBus(tour(A,B,C),TotalCost):-
+    distance(A,B,Cost1),
+    distance(C,B,Cost2),
+    TotalCost is Cost1+Cost2.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/*Execute the Program:-
+?-costBus(tour(leuven-station,leuven-city-center,heverlee),TotalCost).
+OUTPUT:
+TotalCost = 18
+
+?-costBus(tour(a,b,c),TotalCost).
+OUTPUT:
+TotalCost = 6
+
+*/
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                                                          %Fisrt Approach
 distance(heverlee, leuven-city-center,10).
