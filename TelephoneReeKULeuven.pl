@@ -10,6 +10,58 @@ e.g.: ?- jean @< maria. succeeds.
 (b) Discuss their advantages and disadvantages. 
 (c) Define for both cases the predicate possadd that for a given set S and for a ground tel/2 term X checks whether X is already in the set S and if not the predicate 
 should add X to S. */
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+                                                                        [Updated:5/1/2021]
+tel(jean,2111).
+tel(maria,1020).
+tel(jean,1000).
+
+posadd_facts(tel(X1,X2),NewSet):-
+    D=[X1,X2],D1=tel(X1,X2),
+    findall([I1,I2],tel(I1,I2),SList),
+    (   checkXinSet(D,SList)->
+    join(SList,TelList),
+    append(TelList,[D1],NewSet);writeln('X present in Set')).
+
+posadd_term(Term,tel(X1,X2),NewSet):-
+    D=[X1,X2],D1=tel(X1,X2),
+    findall([I1,I2],member(tel(I1,I2),Term),SList),
+    (   checkXinSet(D,SList)->
+    join(SList,TelList),
+    append(TelList,[D1],NewSet);writeln('X present in Set')).
+
+
+checkXinSet(_,[]).
+checkXinSet([H1,H2],[W|T]):-
+    W=[W1,W2],
+    [H1,H2]\=[W1,W2],
+    checkXinSet([H1,H2],T).
+
+join([],[]).
+join([H|T],[tel(W1,W2)|List]):-
+    H=[W1,W2],
+    join(T,List).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/*Execute the Program:-
+?-posadd_facts(tel(jalex,1000),NewSet).
+OUTPUT:
+NewSet = [tel(jean, 2111), tel(maria, 1020), tel(jean, 1000), tel(jalex, 1000)]
+
+?-posadd_facts(tel(jean,1000),NewSet).
+OUTPUT:
+X present in Set
+1true
+
+?-posadd_term([tel(jean, 2111), tel(maria, 1020), tel(jean, 1000)],tel(jean,1000),NewSet).
+OUTPUT:
+X present in Set
+1true
+
+?-posadd_term([tel(jean, 2111), tel(maria, 1020), tel(jean, 1000)],tel(alex,1000),NewSet).
+OUTPUT:
+NewSet = [tel(jean, 2111), tel(maria, 1020), tel(jean, 1000), tel(alex, 1000)]
+*/
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Facts                                                                     %Update:9/12/2020
 tel(jack,1234).
