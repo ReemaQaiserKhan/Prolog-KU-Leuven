@@ -50,7 +50,7 @@ possible_good_configurations(X):-
    length(L,8),
    findall(L,(maplist([I]>>(member(I,[0,1,2])),L)),List),
             getGoodConfigurationsList(List,GList),
-           getNoVariantsList(GList,X1),append(X1,X2),set(X2,X),!.
+           getNoVariantsList(GList,X),!.
 
 getGoodConfigurationsList([],[]):-!.
 getGoodConfigurationsList([H|T],[H|List]):-
@@ -61,22 +61,32 @@ getGoodConfigurationsList([H|T],List):-
     getGoodConfigurationsList(T,List).
 
 getNoVariantsList([],[]).
-getNoVariantsList([H|T],[Xs|List]):-
-    getNoVariantsList1(H,[H|T],Xs),
-   getNoVariantsList(T,List).
+getNoVariantsList([H|T],Xs):-
+    getNoVariantsList1([H|T],[H|T],Xs).
 
-getNoVariantsList1(_,[],[]).
-getNoVariantsList1(H,[W1|E1],[H|List]):-
-    \+check_variant(H,W1),!,
-    getNoVariantsList1(H,E1,List).
+getNoVariantsList1([],_,[]).
+getNoVariantsList1([H|T],[W1|E1],List):-
+    (   H=[H1,H2,H3,H4,H5,H6,H7,H8],R1=[H3,H4,H5,H6,H7,H8,H1,H2],
+        \+member(R1,[W1|E1]),!,
+    getNoVariantsList1(T,[W1|E1],List))
+    ; (  H=[H1,H2,H3,H4,H5,H6,H7,H8],
+    R2=[H5,H6,H7,H8,H1,H2,H3,H4], \+member(R2,[W1|E1]),!,
+    getNoVariantsList1(T,[W1|E1],List))
+    ;   (  H=[H1,H2,H3,H4,H5,H6,H7,H8], 
+    R3=[H7,H8,H1,H2,H3,H4,H5,H6], \+member(R3,[W1|E1]),!,
+    getNoVariantsList1(T,[W1|E1],List)).
     
-getNoVariantsList1(H,[W1|E1],List):-
-      check_variant(H,W1),!,
-    getNoVariantsList1(H,E1,List).
-    
-set([],[]).
-set([H|T],[H|T2]):-
-    subtract(T,[H],T3),set(T3,T2).
+getNoVariantsList1([H|T],[W1|E1],[H|List]):-
+    (   H=[H1,H2,H3,H4,H5,H6,H7,H8],R1=[H3,H4,H5,H6,H7,H8,H1,H2],
+     member(R1,[W1|E1]),!,
+    getNoVariantsList1(T,[W1|E1],List))
+    ; (  H=[H1,H2,H3,H4,H5,H6,H7,H8], 
+    R2=[H5,H6,H7,H8,H1,H2,H3,H4],
+     member(R2,[W1|E1]),!,
+    getNoVariantsList1(T,[W1|E1],List))
+    ;   ( H=[H1,H2,H3,H4,H5,H6,H7,H8], 
+    R3=[H7,H8,H1,H2,H3,H4,H5,H6],   member(R3,[W1|E1]),!,
+    getNoVariantsList1(T,[W1|E1],List)).
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 /* Execute the Program:-
@@ -90,10 +100,10 @@ true
 
 ?- possible_good_configurations(X).
 OUTPUT:
-X = [[0, 1, 2, 0, 1, 0, 2, 1], [0, 1, 2, 0, 1, 1, 1, 2], [0, 1, 2, 1, 0, 1, 2, 1], [0, 1, 2, 1, 0, 2, 1, 2], [0, 2, 1, 0, 2, 0, 1, 2], [0, 2, 1, 1, 1, 0, 2, 1], 
+X = [[0, 1, 2, 0, 1, 0, 2, 1], [0, 1, 2, 0, 1, 1, 1, 2], [0, 1, 2, 1, 0, 1, 2, 1], [0, 1, 2, 1, 0, 2, 1, 2], [0, 2, 1, 0, 2, 0, 1, 2], [0, 2, 1, 1, 1, 0, 2, 1],
 [0, 2, 1, 1, 1, 1, 1, 2], [0, 2, 1, 2, 0, 1, 2, 1], [0, 2, 1, 2, 0, 2, 1, 2], [1, 0, 2, 0, 1, 0, 2, 0], [1, 0, 2, 0, 1, 1, 1, 1], [1, 0, 2, 0, 1, 2, 0, 2],
-[1, 0, 2, 1, 0, 1, 2, 0], [1, 0, 2, 1, 0, 2, 1, 1], [1, 1, 1, 0, 2, 0, 1, 1], [1, 1, 1, 0, 2, 1, 0, 2], [1, 1, 1, 1, 1, 0, 2, 0], [1, 1, 1, 1, 1, 1, 1, 1], 
-[1, 1, 1, 1, 1, 2, 0, 2], [1, 1, 1, 2, 0, 1, 2, 0], [1, 1, 1, 2, 0, 2, 1, 1], [1, 2, 0, 1, 2, 0, 1, 1], [1, 2, 0, 1, 2, 1, 0, 2], [1, 2, 0, 2, 1, 0, 2, 0], 
-[1, 2, 0, 2, 1, 1, 1, 1], [1, 2, 0, 2, 1, 2, 0, 2], [2, 0, 1, 0, 2, 0, 1, 0], [2, 0, 1, 0, 2, 1, 0, 1], [2, 0, 1, 1, 1, 1, 1, 0], [2, 0, 1, 1, 1, 2, 0, 1], 
+[1, 0, 2, 1, 0, 1, 2, 0], [1, 0, 2, 1, 0, 2, 1, 1], [1, 1, 1, 0, 2, 0, 1, 1], [1, 1, 1, 0, 2, 1, 0, 2], [1, 1, 1, 1, 1, 0, 2, 0], [1, 1, 1, 1, 1, 1, 1, 1],
+[1, 1, 1, 1, 1, 2, 0, 2], [1, 1, 1, 2, 0, 1, 2, 0], [1, 1, 1, 2, 0, 2, 1, 1], [1, 2, 0, 1, 2, 0, 1, 1], [1, 2, 0, 1, 2, 1, 0, 2], [1, 2, 0, 2, 1, 0, 2, 0],
+[1, 2, 0, 2, 1, 1, 1, 1], [1, 2, 0, 2, 1, 2, 0, 2], [2, 0, 1, 0, 2, 0, 1, 0], [2, 0, 1, 0, 2, 1, 0, 1], [2, 0, 1, 1, 1, 1, 1, 0], [2, 0, 1, 1, 1, 2, 0, 1],
 [2, 0, 1, 2, 0, 2, 1, 0], [2, 1, 0, 1, 2, 0, 1, 0], [2, 1, 0, 1, 2, 1, 0, 1], [2, 1, 0, 2, 1, 1, 1, 0], [2, 1, 0, 2, 1, 2, 0, 1]]
 */
