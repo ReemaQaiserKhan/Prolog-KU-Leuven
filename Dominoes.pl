@@ -50,7 +50,7 @@ possible_good_configurations(X):-
    length(L,8),
    findall(L,(maplist([I]>>(member(I,[0,1,2])),L)),List),
             getGoodConfigurationsList(List,GList),
-           getNoVariantsList(GList,X),!.
+           getNoVariantsList(GList,X1),last(X,X1),!.
 
 getGoodConfigurationsList([],[]):-!.
 getGoodConfigurationsList([H|T],[H|List]):-
@@ -60,33 +60,27 @@ getGoodConfigurationsList([H|T],List):-
     \+check_configuration(H),
     getGoodConfigurationsList(T,List).
 
-getNoVariantsList([],[]).
-getNoVariantsList([H|T],Xs):-
-    getNoVariantsList1([H|T],[H|T],Xs).
-
+getNoVariantsList([H|T],L):-
+    getNoVariantsList1([H|T],[H|T],L),!.
 getNoVariantsList1([],_,[]).
-getNoVariantsList1([H|T],[W1|E1],List):-
-    (   H=[H1,H2,H3,H4,H5,H6,H7,H8],R1=[H3,H4,H5,H6,H7,H8,H1,H2],
-        \+member(R1,[W1|E1]),!,
-    getNoVariantsList1(T,[W1|E1],List))
-    ; (  H=[H1,H2,H3,H4,H5,H6,H7,H8],
-    R2=[H5,H6,H7,H8,H1,H2,H3,H4], \+member(R2,[W1|E1]),!,
-    getNoVariantsList1(T,[W1|E1],List))
-    ;   (  H=[H1,H2,H3,H4,H5,H6,H7,H8], 
-    R3=[H7,H8,H1,H2,H3,H4,H5,H6], \+member(R3,[W1|E1]),!,
-    getNoVariantsList1(T,[W1|E1],List)).
-    
-getNoVariantsList1([H|T],[W1|E1],[H|List]):-
-    (   H=[H1,H2,H3,H4,H5,H6,H7,H8],R1=[H3,H4,H5,H6,H7,H8,H1,H2],
-     member(R1,[W1|E1]),!,
-    getNoVariantsList1(T,[W1|E1],List))
-    ; (  H=[H1,H2,H3,H4,H5,H6,H7,H8], 
-    R2=[H5,H6,H7,H8,H1,H2,H3,H4],
-     member(R2,[W1|E1]),!,
-    getNoVariantsList1(T,[W1|E1],List))
-    ;   ( H=[H1,H2,H3,H4,H5,H6,H7,H8], 
-    R3=[H7,H8,H1,H2,H3,H4,H5,H6],   member(R3,[W1|E1]),!,
-    getNoVariantsList1(T,[W1|E1],List)).
+getNoVariantsList1([_X],[],[]).
+getNoVariantsList1([],[],[]).
+getNoVariantsList1(_X,[],[]).
+getNoVariantsList1([H|T],[H1|T1],[L1|List]):-
+    getNoVariantsList2(H,[H1|T1],L1),
+    getNoVariantsList1(T,L1,List).
+
+getNoVariantsList2(_,[],[]).
+getNoVariantsList2(H,[H1|T1],[H1|List]):-
+    \+check_variant(H,H1),
+    getNoVariantsList2(H,T1,List).
+getNoVariantsList2(H,[H1|T1],List):-
+    check_variant(H,H1),
+    getNoVariantsList2(H,T1,List).
+
+last(X,[X]).
+last(X,[_|T]):-
+    last(X,T).
     
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 /* Execute the Program:-
@@ -100,10 +94,5 @@ true
 
 ?- possible_good_configurations(X).
 OUTPUT:
-X = [[0, 1, 2, 0, 1, 0, 2, 1], [0, 1, 2, 0, 1, 1, 1, 2], [0, 1, 2, 1, 0, 1, 2, 1], [0, 1, 2, 1, 0, 2, 1, 2], [0, 2, 1, 0, 2, 0, 1, 2], [0, 2, 1, 1, 1, 0, 2, 1],
-[0, 2, 1, 1, 1, 1, 1, 2], [0, 2, 1, 2, 0, 1, 2, 1], [0, 2, 1, 2, 0, 2, 1, 2], [1, 0, 2, 0, 1, 0, 2, 0], [1, 0, 2, 0, 1, 1, 1, 1], [1, 0, 2, 0, 1, 2, 0, 2],
-[1, 0, 2, 1, 0, 1, 2, 0], [1, 0, 2, 1, 0, 2, 1, 1], [1, 1, 1, 0, 2, 0, 1, 1], [1, 1, 1, 0, 2, 1, 0, 2], [1, 1, 1, 1, 1, 0, 2, 0], [1, 1, 1, 1, 1, 1, 1, 1],
-[1, 1, 1, 1, 1, 2, 0, 2], [1, 1, 1, 2, 0, 1, 2, 0], [1, 1, 1, 2, 0, 2, 1, 1], [1, 2, 0, 1, 2, 0, 1, 1], [1, 2, 0, 1, 2, 1, 0, 2], [1, 2, 0, 2, 1, 0, 2, 0],
-[1, 2, 0, 2, 1, 1, 1, 1], [1, 2, 0, 2, 1, 2, 0, 2], [2, 0, 1, 0, 2, 0, 1, 0], [2, 0, 1, 0, 2, 1, 0, 1], [2, 0, 1, 1, 1, 1, 1, 0], [2, 0, 1, 1, 1, 2, 0, 1],
-[2, 0, 1, 2, 0, 2, 1, 0], [2, 1, 0, 1, 2, 0, 1, 0], [2, 1, 0, 1, 2, 1, 0, 1], [2, 1, 0, 2, 1, 1, 1, 0], [2, 1, 0, 2, 1, 2, 0, 1]]
+X = []
 */
