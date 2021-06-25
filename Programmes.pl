@@ -1,5 +1,5 @@
 /* Write a code that based on percentage recommends the programmes available.*/
-
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 k:-
     write('Enter name: '),nl, %Enter Name
     read(FName),nl,
@@ -27,3 +27,40 @@ k:-
         Percentage>=60 ->
         write('Dentistry');
         write('No programmes avaiable.'))).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+/* Execute the Program:
+
+Enter name:
+alex
+
+Enter your interest: 1- Engineering 2- Medical
+2
+
+Enter your percentage:
+63
+
+Name:ALEX
+Interest:2
+Percentage:63
+You are eligible for the following programmes:
+Dentistry
+1true
+
+Enter name:
+alex
+
+Enter your interest:
+1
+
+Enter your percentage:
+50
+
+Name:ALEX
+Interest:1
+Percentage:50
+You are eligible for the following programmes:
+No programmes avaiable.
+1true
+
+*/
