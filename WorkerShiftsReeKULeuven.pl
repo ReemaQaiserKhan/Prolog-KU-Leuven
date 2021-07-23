@@ -1,6 +1,6 @@
 % You can run WorkerShiftsReeKULeuven.pl on https://swish.swi-prolog.org/. Write WorkerShiftsReeKULeuven.pl in the search bar and then select.
 % Prolog Examination January 2016 Q4
-/*You have to plan the shifts of the take shifts one after another. For imum and maximum number of planning for the next quarter, his the minimum and the maximum. 
+/*You have to plan the shifts of the take shifts one after another. For minimum and maximum number of planning for the next quarter, his the minimum and the maximum. 
 workers for the next quarter. They each worker you are given his min-shifts in the next quarter. In the number of shifts has to be between 
 1) Represent this information in two different ways: by Prolog facts and by Prolog terms. Use your 2 representaions to represent the information that worker 
 danny 'needs to do at least 3 shifts and at most 7. 
