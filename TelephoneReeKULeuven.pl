@@ -11,6 +11,41 @@ e.g.: ?- jean @< maria. succeeds.
 (c) Define for both cases the predicate possadd that for a given set S and for a ground tel/2 term X checks whether X is already in the set S and if not the predicate 
 should add X to S. */
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+tel(jean,2111).
+tel(maria,1000).
+tel(jean,1020).
+
+%Facts
+%possadd(tel(mark,2111)).
+possadd(X):-
+    findall([Name,Number],tel(Name,Number),S), % S =[[jean, 2111], [maria, 1000], [jean, 1020]]
+    X=tel(A,B),
+    X1=[A,B],
+     % if-else
+    (   member(X1,S) ->  % if true then
+        write('X already in Set S'); %   ; else
+        append([X1],S,SNew),
+        write('X added to Set S:'),nl,
+        write(SNew)).
+%Terms 
+%possadd(tel(jean,2111),[tel(jean,2111),tel(maria,1000),tel(jean,1020)]).
+possadd(X,S):-
+    findall([Name,Number],member(tel(Name,Number),S),SetS), % SetS =[[jean, 2111], [maria, 1000], [jean, 1020]]
+    X=tel(A,B),
+    X1=[A,B],
+    % if-else
+    (   member(X1,SetS) ->  % if true then
+        write('X already in Set S'); %   ; else
+        append([X1],SetS,SNew),
+        write('X added to Set S:'),nl,
+        write(SNew)).
+
+%member predicate
+member(X,[X|_]):-!.
+member(X,[_|T]):-
+    member(X,T).
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                                                         [Updated:5/1/2021]
 tel(jean,2111).
 tel(maria,1020).
