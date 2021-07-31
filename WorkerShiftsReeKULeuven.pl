@@ -17,10 +17,28 @@ worker(jeff,2,2).
 % Terms
 [worker(danny,3,7),worker(jeff,2,2),worker(ann,2,4)]
 
+%possible([danny,ann],6).
 possible(Workers,Shift):-
     Workers=[A,B],
     worker(A,A1,A2),
     worker(B,B1,B2),
+    findall(D,between(A1,A2,D),DList),
+    findall(J,between(B1,B2,J),JList),
+    Res is Shift//2,
+    Pos is Shift-Res,
+    (   (   member(Res,DList), member(Pos,JList);member(Pos,DList), member(Res,JList))->  
+    write('Possible');
+    write('Not Possible')).
+    
+%possible([danny,jeff],[worker(danny,3,7),worker(jeff,2,2),worker(ann,2,4)],6).
+possible(Workers,Term,Shift):-
+    Workers=[A,B],
+    findall(Min,member(worker(A,Min,_),Term),AMin),
+    findall(Min,member(worker(B,Min,_),Term),BMin),
+    findall(Max,member(worker(A,_,Max),Term),AMax),
+    findall(Max,member(worker(B,_,Max),Term),BMax),
+    flatten([AMin,BMin,AMax,BMax],FlatList),
+    FlatList=[A1,B1,A2,B2],
     findall(D,between(A1,A2,D),DList),
     findall(J,between(B1,B2,J),JList),
     Res is Shift//2,
