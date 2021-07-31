@@ -8,6 +8,26 @@ danny 'needs to do at least 3 shifts and at most 7.
 Consider the case that danny needs to do at least 3 shifts and at most 7, and jef needs to do at least 2 shifts and at most 2, and ann needs to do at least 2 shifts 
 and at most 4. It is possible to make a plan for 5 shifts with danny and jef: namely danny ,jeff, danny, jeff, danny.
 It is not possible to make a plan for 6 shifts with danny and jef. It is possible to make a plan for 6 shifts with danny and ann. namely ann, danny, ann,danny, ann, danny.*/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Facts
+worker(danny,3,7).
+worker(ann,2,4).
+worker(jeff,2,2).
+
+% Terms
+[worker(danny,3,7),worker(jeff,2,2),worker(ann,2,4)]
+
+possible(Workers,Shift):-
+    Workers=[A,B],
+    worker(A,A1,A2),
+    worker(B,B1,B2),
+    findall(D,between(A1,A2,D),DList),
+    findall(J,between(B1,B2,J),JList),
+    Res is Shift//2,
+    Pos is Shift-Res,
+    (   (   member(Res,DList), member(Pos,JList);member(Pos,DList), member(Res,JList))->  
+    write('Possible');
+    write('Not Possible')).
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % Facts
 worker(danny,3,7).
