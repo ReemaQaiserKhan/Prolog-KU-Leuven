@@ -9,8 +9,8 @@ shorthand a b c d, and the final state a d a b. A sequence of instructions that 
 obtain a a b d, next by swap(2,3) we obtain a b a d, and finally by swap(2,4) we obtain adab.  
 1) Define a data structure to represent a set of n registers. Use your representation to represent for the above example with 4 registers, namely a b a d. 
 2) How do you represent a sequence of instructions? 
-3) Write a predicate that for a given set of registers and a given copy(i) instruction (1 < i < n), computes the resulting set of registers. For example for a bad and copy(2) it
-should compute a b b d.
+3) Write a predicate that for a given set of registers and a given copy(i) instruction (1 < i < n), computes the resulting set of registers. For example for a b a d and copy(2)
+it should compute a b b d.
 4) Write a predicate that for a given set of registers and a given trwap(i,j) instruction (1 < 1 < j < n), computes the resulting set of registers. 
 5) Write a predicate that for a. given set of registers generates all the instruction sequences of a given length I. 
 6) Write a predicate that checks whether a given instruction se-quence transforms a given initial set of registers into a given final set of registers.
