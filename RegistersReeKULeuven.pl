@@ -11,7 +11,7 @@ obtain a a b d, next by swap(2,3) we obtain a b a d, and finally by swap(2,4) we
 2) How do you represent a sequence of instructions? 
 3) Write a predicate that for a given set of registers and a given copy(i) instruction (1 < i < n), computes the resulting set of registers. For example for a b a d and copy(2)
 it should compute a b b d.
-4) Write a predicate that for a given set of registers and a given trwap(i,j) instruction (1 < 1 < j < n), computes the resulting set of registers. 
+4) Write a predicate that for a given set of registers and a given swap(i,j) instruction (1 < 1 < j < n), computes the resulting set of registers. 
 5) Write a predicate that for a. given set of registers generates all the instruction sequences of a given length I. 
 6) Write a predicate that checks whether a given instruction se-quence transforms a given initial set of registers into a given final set of registers.
 7) Now suppose that you are Interested in finding the shortest instruction sequence for transforming an initial set into a final set using iterative deepening..
