@@ -10,7 +10,7 @@ namely 1) ax and box of cookies, 2) book of Norvig and box of cookies and 3) boo
 subsets. Note that in general there can a finite number n of such items.
 3) Write a predicate highest to find the list of all items with the highest value. You can again chose one of the representations.*/
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-                                                                 %[Updated:1/4/2021]
+                                                                 %[Updated:8/9/2021]
 
 comb(InList,Items,W,V) :-
     subset(Subset,InList),
@@ -31,6 +31,32 @@ sum([],0).
 sum([H|T],Sum):-
     sum(T,SumN),
     Sum is SumN+H.
+    
+    
+ highest(Terms,ItemList):-
+    findall(S,subset(S,Terms),SList),
+    c1(SList,SumVList,IVList), %SumV gives us list of Values Sum, [80,70,...]
+                              %IVList gives us Items and Values Sum [[ax,book],80]... 
+    max(SumVList,MaxV),
+    findall(Items,member([Items,MaxV],IVList),ItemList).
+
+c1([],[],[]).
+c1([H|T],[SumV|L],[[Items,SumV]|Rest]):-
+   findall(VI,member(item(_,_,VI),H),V1),
+   findall(I,member(item(I,_,_),H),Items),
+   sum(V1,SumV),
+   c1(T,L,Rest).
+   
+max([],0).
+max([H|T],Max):-
+    max(T,TailMax),
+    H>TailMax,
+    Max is H.
+max([H|T],Max):-
+    max(T,TailMax),
+    H=<TailMax,
+    Max is TailMax.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 /*Execute the Program:-
 ?-comb([item(ax,50,40),item(book,60,40),item(cookie,10,30),item(laptop,40,30)],Items,150,10).
@@ -45,6 +71,10 @@ Items = [cookie]
 Items = [cookie, laptop]
 Items = [laptop]
 false
+
+?-highest([item(ax,50,40),item(book,60,40),item(cookie,10,30),item(laptop,40,30)],ItemList).
+OUTPUT:
+ItemList = [[ax, book, cookie, laptop]]
 */
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
