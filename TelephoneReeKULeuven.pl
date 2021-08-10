@@ -11,6 +11,8 @@ e.g.: ?- jean @< maria. succeeds.
 (c) Define for both cases the predicate possadd that for a given set S and for a ground tel/2 term X checks whether X is already in the set S and if not the predicate 
 should add X to S. */
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%Swish: TelRee
+
 tel(jean,2111).
 tel(maria,1000).
 tel(jean,1020).
