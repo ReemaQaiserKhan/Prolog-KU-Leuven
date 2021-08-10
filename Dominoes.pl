@@ -31,6 +31,7 @@ the form 0 2 1 1 1 0 2 1 (i.e. giving the number of spots on the parts of the do
 Figure 2: A variant configuration of dominoes
 */
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Swish: DominoExamSample
 
 domino([0,1]). %single domino
 domino([0, 2, 1, 1, 1, 0, 2, 1]). %configuration of 4 dominoes
