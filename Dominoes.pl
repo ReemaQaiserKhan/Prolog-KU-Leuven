@@ -35,6 +35,72 @@ Figure 2: A variant configuration of dominoes
 domino([0,1]). %single domino
 domino([0, 2, 1, 1, 1, 0, 2, 1]). %configuration of 4 dominoes
 
+%good_confriguration([0,2,1,1,1,0,2,1]).
+good_confriguration(Config):-
+    Config=[A1,A2,A3,A4,A5,A6,A7,A8],
+    3 is A1+A2+A3,
+    3 is A3+A4+A5,
+    3 is A5+A6+A7,
+    3 is A7+A8+A1.
+
+%check_variant([0,2,1,1,1,0,2,1],[1,1,1,0,2,1,0,2]).
+check_variant(Config1, Config2):-
+    ninety(Config1,V1),
+    one_eigthy(Config1,V2),
+    two_seventy(Config1,V3),
+    
+    (V1=Config2;
+    V2=Config2;
+    V3=Config2).
+
+ninety([H1,H2|T],Rot):-
+    append(T,[H1,H2],Rot).
+
+one_eigthy([H1,H2,H3,H4|T],Rot):-
+    append(T,[H1,H2,H3,H4],Rot).
+
+two_seventy([H1,H2,H3,H4,H5,H6|T],Rot):-
+    append(T,[H1,H2,H3,H4,H5,H6],Rot).    
+
+%possible_good_confrigurations([0,2,1,1,1,0,2,1],L).
+% Note: Time limit exceeded
+possible_good_confrigurations(DList,FList):-
+    findall(S,permute(S,DList),SList),
+    lengthFilter(SList,S1), % Gives back List with permutations of length 8
+    c1(S1,S1,FList).
+
+%Creates Permutations
+permute([], []).
+permute([X|Rest], L) :-
+    permute(Rest, L1),
+    select(X, L, L1).
+
+select(H,[H|T],T).
+select(H,[N|T],[N|L]):-
+    select(H,T,L).
+
+lengthFilter([],[]).
+lengthFilter([H|T],[H|L]):-
+    length(H,8),
+    lengthFilter(T,L).
+lengthFilter([H|T],L):-
+    \+length(H,8),
+    lengthFilter(T,L).
+
+c1([],_,[]).
+c1([H|T],[H2|T2],[H|L]):-
+    good_confriguration(H),
+    c2(H,[H2|T2]),
+    c1(T,[H2|T2],L).
+
+c2(_,[]).
+c2(H,[H2|T2]):-
+    \+check_variant(H,H2),
+    c2(H,T2).
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+domino([0,1]). %single domino
+domino([0, 2, 1, 1, 1, 0, 2, 1]). %configuration of 4 dominoes
+
 check_configuration([H1,H2,H3,H4,H5,H6,H7,H8]):-
     3 is H1+H2+H3,
     3 is H3+H4+H5,
