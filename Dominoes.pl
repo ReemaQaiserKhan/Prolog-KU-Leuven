@@ -92,6 +92,9 @@ c1([H|T],[H2|T2],[H|L]):-
     good_confriguration(H),
     c2(H,[H2|T2]),
     c1(T,[H2|T2],L).
+c1([H|T],[H2|T2],L):-
+    \+good_confriguration(H),
+    c1(T,[H2|T2],L).
 
 c2(_,[]).
 c2(H,[H2|T2]):-
