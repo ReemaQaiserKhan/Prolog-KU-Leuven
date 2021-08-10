@@ -11,7 +11,7 @@ subsets. Note that in general there can a finite number n of such items.
 3) Write a predicate highest to find the list of all items with the highest value. You can again chose one of the representations.*/
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
                                                                  %[Updated:8/9/2021]
-
+% Swish: Jan2020Q4
 comb(InList,Items,W,V) :-
     subset(Subset,InList),
     findall(W1,member(item(_,W1,_),Subset),WL),
